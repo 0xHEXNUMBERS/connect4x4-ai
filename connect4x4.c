@@ -810,6 +810,11 @@ int main(int argc, char** argv) {
 		}
 
 		destroyExcessBranches(root, action);
+
+		if(root->children[action] == NULL) {
+			root->children[action] = malloc(sizeof(struct TreeNode));
+			initializeNode(root->children[action], root, action);
+		}
 		
 		root = root->children[action];
 		resetTree(root);
